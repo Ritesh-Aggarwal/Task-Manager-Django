@@ -1,14 +1,12 @@
 from django.urls import path
+from django.contrib.auth.views import LoginView, LogoutView
+from .views import SignUpView
+from .forms import UserLoginForm
 
-from task_manager.users.views import (
-    user_detail_view,
-    user_redirect_view,
-    user_update_view,
-)
+app_name = 'users'
 
-app_name = "users"
 urlpatterns = [
-    path("~redirect/", view=user_redirect_view, name="redirect"),
-    path("~update/", view=user_update_view, name="update"),
-    path("<str:username>/", view=user_detail_view, name="detail"),
+    path('login/', LoginView.as_view(template_name='tasks/user_login.html', authentication_form=UserLoginForm), name='login'),
+    path('register/', SignUpView.as_view(), name='register'),
+    path('logout/', LogoutView.as_view(), name='logout'),
 ]
