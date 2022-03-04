@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from celery.task import periodic_task
 from django.core.mail import send_mail
 from django.utils import timezone
-from task_manager.celery import app
+from config.celery_app import app
 from django.db.models import Count
 from tasks.models import ReportSchedule, Task
 
