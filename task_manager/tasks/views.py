@@ -43,8 +43,10 @@ class UpdateReportSchedule(AuthorizeLoginUser, UpdateView):
         return HttpResponseRedirect(self.get_success_url())
 
     def get_object(self):
-        report_schedule = ReportSchedule.objects.get(user=self.request.user)
-        print(report_schedule)
+        try:
+            report_schedule = ReportSchedule.objects.get(user=self.request.user)
+        except:
+            report_schedule = ReportSchedule.objects.create(user=self.request.user)
         return report_schedule
 
 
@@ -55,7 +57,6 @@ class UserCreateView(CreateView):
     success_url = "/user/login"
 
     def form_valid(self, form):
-        print("<-------------------------------------------------------->")
         self.object = form.save()
         user = self.object
         rep = ReportSchedule.objects.create(user=user)
