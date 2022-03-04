@@ -111,7 +111,7 @@ AUTHENTICATION_BACKENDS = [
 LOGIN_REDIRECT_URL = "/tasks"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-url
 LOGIN_URL = "/user/login"
-LOGOUT_REDIRECT_URL = "/users/login"
+LOGOUT_REDIRECT_URL = "/user/login"
 
 # PASSWORDS
 # ------------------------------------------------------------------------------
